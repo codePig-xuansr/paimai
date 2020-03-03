@@ -2,7 +2,13 @@ package com.accp.paimai.pojo;
 
 import java.util.Date;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
+@TableName("goodsdetailed")
 public class Detail {
+	@TableId(type = IdType.AUTO,value = "dId")
     private Integer did;
 
     private Integer userid;

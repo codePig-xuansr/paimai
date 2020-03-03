@@ -9,13 +9,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.paimai.biz.UserBiz;
 import com.accp.paimai.pojo.User;
 
-@Service
-@RestController("/api/user")
+@RestController
+@RequestMapping("/api/user")
 public class UserAction {
 
 	@Autowired
@@ -35,18 +36,10 @@ public class UserAction {
 		return msg;
 	}
 	
-	@GetMapping("/login")
-	public Map<String, String> login(@PathVariable String userName,@PathVariable String userPwd){
-		Map<String, String> msg=new HashMap<String, String>();
+	@GetMapping("/login/{userName}/{userPwd}")
+	public User login(@PathVariable String userName,@PathVariable String userPwd){
 		User user=biz.login(userName, userPwd);
-		if(user!=null) {
-			msg.put("code", "200");
-			msg.put("msg", "登录成功!");
-		}else {
-			msg.put("code", "200");
-			msg.put("msg", "登录时发生错误!");
-		}
-		return msg;
+		return user;
 	}
 	
 }
