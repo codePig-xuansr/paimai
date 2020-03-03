@@ -26,9 +26,11 @@ public class UserAction {
 		Map<String, String> msg=new HashMap<String, String>();
 		int res=biz.regs(user);
 		if(res>0) {
-			msg.put("code", "注册成功!");
+			msg.put("code", "200");
+			msg.put("msg", "注册成功!");
 		}else {
-			msg.put("code", "注册出错!");
+			msg.put("code", "300");
+			msg.put("msg", "注册发生错误！");
 		}
 		return msg;
 	}
@@ -38,9 +40,11 @@ public class UserAction {
 		Map<String, String> msg=new HashMap<String, String>();
 		User user=biz.login(userName, userPwd);
 		if(user!=null) {
-			msg.put("code", "登录成功!");
+			msg.put("code", "200");
+			msg.put("msg", "登录成功!");
 		}else {
-			msg.put("code", "登陆出错!");
+			msg.put("code", "200");
+			msg.put("msg", "登录时发生错误!");
 		}
 		return msg;
 	}
