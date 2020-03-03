@@ -3,7 +3,7 @@ package com.accp.paimai.pojo;
 public class User {
     private Integer userid;
 
-    private Integer username;
+    private String username;
 
     private String userpwd;
 
@@ -17,11 +17,11 @@ public class User {
         this.userid = userid;
     }
 
-    public Integer getUsername() {
+    public String getUsername() {
         return username;
     }
 
-    public void setUsername(Integer username) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
@@ -40,4 +40,25 @@ public class User {
     public void setPower(Integer power) {
         this.power = power;
     }
+
+	public User(String username, String userpwd, Integer power) {
+		super();
+		this.username = username;
+		this.userpwd = userpwd;
+		this.power = power;
+	}
+
+	public User(Integer userid, String username, String userpwd, Integer power) {
+		super();
+		this.userid = userid;
+		this.username = username;
+		this.userpwd = userpwd;
+		this.power = power;
+	}
+
+	public User() {
+		super();
+	}
+    
+    
 }
