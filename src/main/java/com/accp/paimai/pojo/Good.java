@@ -5,6 +5,7 @@ import java.util.Date;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @TableName("goods")
 public class Good {
@@ -15,15 +16,17 @@ public class Good {
 
     private Float goodsprice;
 
+    @JsonFormat(pattern = "yy-MM-dd")
     private Date startdate;
 
+    @JsonFormat(pattern = "yy-MM-dd")
     private Date enddate;
 
     private Integer statrc;
 
     private String depict;
 
-    private byte[] goodsimg;
+    private String goodsimg;
 
     public Integer getGoodsid() {
         return goodsid;
@@ -81,11 +84,30 @@ public class Good {
         this.depict = depict == null ? null : depict.trim();
     }
 
-    public byte[] getGoodsimg() {
+    public String getGoodsimg() {
         return goodsimg;
     }
 
-    public void setGoodsimg(byte[] goodsimg) {
+    public void setGoodsimg(String goodsimg) {
         this.goodsimg = goodsimg;
     }
+
+	public Good(Integer goodsid, String goodsname, Float goodsprice, Date startdate, Date enddate, Integer statrc,
+			String depict, String goodsimg) {
+		super();
+		this.goodsid = goodsid;
+		this.goodsname = goodsname;
+		this.goodsprice = goodsprice;
+		this.startdate = startdate;
+		this.enddate = enddate;
+		this.statrc = statrc;
+		this.depict = depict;
+		this.goodsimg = goodsimg;
+	}
+
+	public Good() {
+		super();
+	}
+    
+    
 }

@@ -23,6 +23,7 @@ public class UserBiz {
 	 * @param user
 	 * @return
 	 */
+	@Transactional(propagation =Propagation.SUPPORTS, isolation =Isolation.READ_COMMITTED, readOnly = false)
 	public Integer regs(User user) {
 		return dao.insert(user);
 	}
