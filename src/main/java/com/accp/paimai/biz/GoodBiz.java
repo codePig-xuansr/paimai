@@ -59,4 +59,12 @@ public class GoodBiz {
 		PageInfo<Good> info = new PageInfo<Good>(dao.selectList(qw));
 		return info;
 	}
+	
+	public Integer modifyGoodById(Good good) {
+		return dao.updateById(good);
+	}
+	
+	public Integer removeGoodById(Integer id) {
+		return dao.deleteById(id);
+	}
 }

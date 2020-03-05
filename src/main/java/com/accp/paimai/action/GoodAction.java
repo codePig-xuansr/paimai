@@ -5,9 +5,11 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,8 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.accp.paimai.biz.GoodBiz;
 import com.accp.paimai.pojo.Good;
 import com.accp.paimai.vo.GoodVO;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.github.pagehelper.PageInfo;
 
 @RestController
@@ -36,8 +36,18 @@ public class GoodAction {
 		return biz.queryBy(vo);
 	}
 	
-	@GetMapping()
+	@GetMapping
 	public PageInfo<Good> queryAll(){
 		return biz.queryAll(1,5);
+	}
+	
+	@PutMapping("/good")
+	public Integer modifyGoodById(@RequestBody Good good) {
+		return biz.modifyGoodById(good);
+	}
+	
+	@DeleteMapping("/good")
+	public Integer removeGoodById(@RequestBody Integer id) {
+		return biz.removeGoodById(id);
 	}
 }
