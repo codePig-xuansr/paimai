@@ -1,145 +1,181 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.accp.paimai.dao.GoodMapper" >
-  <resultMap id="BaseResultMap" type="com.accp.paimai.pojo.Good" >
-    <id column="goodsId" property="goodsid" jdbcType="INTEGER" />
-    <result column="goodsName" property="goodsname" jdbcType="VARCHAR" />
-    <result column="goodsPrice" property="goodsprice" jdbcType="REAL" />
-    <result column="startDate" property="startdate" jdbcType="DATE" />
-    <result column="endDate" property="enddate" jdbcType="DATE" />
-    <result column="statrc" property="statrc" jdbcType="INTEGER" />
-    <result column="depict" property="depict" jdbcType="VARCHAR" />
-  </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.accp.paimai.pojo.Good" extends="BaseResultMap" >
-    <result column="goodsImg" property="goodsimg" jdbcType="LONGVARBINARY" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    goodsId, goodsName, goodsPrice, startDate, endDate, statrc, depict
-  </sql>
-  <sql id="Blob_Column_List" >
-    goodsImg
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from goods
-    where goodsId = #{goodsid,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from goods
-    where goodsId = #{goodsid,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.accp.paimai.pojo.Good" >
-    insert into goods (goodsId, goodsName, goodsPrice, 
-      startDate, endDate, statrc, 
-      depict, goodsImg)
-    values (#{goodsid,jdbcType=INTEGER}, #{goodsname,jdbcType=VARCHAR}, #{goodsprice,jdbcType=REAL}, 
-      #{startdate,jdbcType=DATE}, #{enddate,jdbcType=DATE}, #{statrc,jdbcType=INTEGER}, 
-      #{depict,jdbcType=VARCHAR}, #{goodsimg,jdbcType=LONGVARBINARY})
-  </insert>
-  <insert id="insertSelective" parameterType="com.accp.paimai.pojo.Good" >
-    insert into goods
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="goodsid != null" >
-        goodsId,
-      </if>
-      <if test="goodsname != null" >
-        goodsName,
-      </if>
-      <if test="goodsprice != null" >
-        goodsPrice,
-      </if>
-      <if test="startdate != null" >
-        startDate,
-      </if>
-      <if test="enddate != null" >
-        endDate,
-      </if>
-      <if test="statrc != null" >
-        statrc,
-      </if>
-      <if test="depict != null" >
-        depict,
-      </if>
-      <if test="goodsimg != null" >
-        goodsImg,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="goodsid != null" >
-        #{goodsid,jdbcType=INTEGER},
-      </if>
-      <if test="goodsname != null" >
-        #{goodsname,jdbcType=VARCHAR},
-      </if>
-      <if test="goodsprice != null" >
-        #{goodsprice,jdbcType=REAL},
-      </if>
-      <if test="startdate != null" >
-        #{startdate,jdbcType=DATE},
-      </if>
-      <if test="enddate != null" >
-        #{enddate,jdbcType=DATE},
-      </if>
-      <if test="statrc != null" >
-        #{statrc,jdbcType=INTEGER},
-      </if>
-      <if test="depict != null" >
-        #{depict,jdbcType=VARCHAR},
-      </if>
-      <if test="goodsimg != null" >
-        #{goodsimg,jdbcType=LONGVARBINARY},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.accp.paimai.pojo.Good" >
-    update goods
-    <set >
-      <if test="goodsname != null" >
-        goodsName = #{goodsname,jdbcType=VARCHAR},
-      </if>
-      <if test="goodsprice != null" >
-        goodsPrice = #{goodsprice,jdbcType=REAL},
-      </if>
-      <if test="startdate != null" >
-        startDate = #{startdate,jdbcType=DATE},
-      </if>
-      <if test="enddate != null" >
-        endDate = #{enddate,jdbcType=DATE},
-      </if>
-      <if test="statrc != null" >
-        statrc = #{statrc,jdbcType=INTEGER},
-      </if>
-      <if test="depict != null" >
-        depict = #{depict,jdbcType=VARCHAR},
-      </if>
-      <if test="goodsimg != null" >
-        goodsImg = #{goodsimg,jdbcType=LONGVARBINARY},
-      </if>
-    </set>
-    where goodsId = #{goodsid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.accp.paimai.pojo.Good" >
-    update goods
-    set goodsName = #{goodsname,jdbcType=VARCHAR},
-      goodsPrice = #{goodsprice,jdbcType=REAL},
-      startDate = #{startdate,jdbcType=DATE},
-      endDate = #{enddate,jdbcType=DATE},
-      statrc = #{statrc,jdbcType=INTEGER},
-      depict = #{depict,jdbcType=VARCHAR},
-      goodsImg = #{goodsimg,jdbcType=LONGVARBINARY}
-    where goodsId = #{goodsid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.accp.paimai.pojo.Good" >
-    update goods
-    set goodsName = #{goodsname,jdbcType=VARCHAR},
-      goodsPrice = #{goodsprice,jdbcType=REAL},
-      startDate = #{startdate,jdbcType=DATE},
-      endDate = #{enddate,jdbcType=DATE},
-      statrc = #{statrc,jdbcType=INTEGER},
-      depict = #{depict,jdbcType=VARCHAR}
-    where goodsId = #{goodsid,jdbcType=INTEGER}
-  </update>
+<mapper namespace="com.accp.paimai.dao.GoodMapper">
+	<resultMap id="BaseResultMap"
+		type="com.accp.paimai.pojo.Good">
+		<id column="goodsId" property="goodsid" jdbcType="INTEGER" />
+		<result column="goodsName" property="goodsname"
+			jdbcType="VARCHAR" />
+		<result column="goodsPrice" property="goodsprice"
+			jdbcType="REAL" />
+		<result column="startDate" property="startdate" jdbcType="DATE" />
+		<result column="endDate" property="enddate" jdbcType="DATE" />
+		<result column="statrc" property="statrc" jdbcType="INTEGER" />
+		<result column="depict" property="depict" jdbcType="VARCHAR" />
+	</resultMap>
+	<resultMap id="ResultMapWithBLOBs"
+		type="com.accp.paimai.pojo.Good" extends="BaseResultMap">
+		<result column="goodsImg" property="goodsimg"
+			jdbcType="LONGVARBINARY" />
+	</resultMap>
+	<resultMap id="ingmap" type="com.accp.paimai.vo.IngVO">
+		<id column="goodsId" property="goodsid" jdbcType="INTEGER" />
+		<result column="goodsName" property="goodsname"
+			jdbcType="VARCHAR" />
+		<result column="goodsPrice" property="goodsprice"
+			jdbcType="REAL" />
+		<result column="startDate" property="startdate" jdbcType="DATE" />
+		<result column="endDate" property="enddate" jdbcType="DATE" />
+		<result column="statrc" property="statrc" jdbcType="INTEGER" />
+		<result column="depict" property="depict" jdbcType="VARCHAR" />
+		<collection property="ingList" column="goodsId"
+			select="queryUserVO"></collection>
+	</resultMap>
+	<sql id="Base_Column_List">
+		goodsId, goodsName, goodsPrice, startDate, endDate, statrc, depict
+	</sql>
+	<sql id="Blob_Column_List">
+		goodsImg
+	</sql>
+	
+	<select id="queryIng" resultMap="ingmap">
+		SELECT * FROM `goods` WHERE NOW() BETWEEN `startDate` AND `endDate`
+	</select>
+	<select id="queryUserVO" resultType="com.accp.paimai.vo.UserVO">
+		SELECT `dDate`,`dPrice`,`userName` FROM `goodsdetailed` gd
+		INNER JOIN `goods` g ON gd.`goodsId`=g.`goodsId`
+		INNER JOIN `user` u ON gd.`userId`=u.`userId`
+		WHERE g.`goodsId`=#{0} ORDER BY `dPrice` DESC
+	</select>
+
+	<select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from goods
+		where goodsId = #{goodsid,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey"
+		parameterType="java.lang.Integer">
+		delete from goods
+		where goodsId = #{goodsid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.accp.paimai.pojo.Good">
+		insert into goods (goodsId, goodsName, goodsPrice,
+		startDate, endDate, statrc,
+		depict, goodsImg)
+		values (#{goodsid,jdbcType=INTEGER}, #{goodsname,jdbcType=VARCHAR},
+		#{goodsprice,jdbcType=REAL},
+		#{startdate,jdbcType=DATE}, #{enddate,jdbcType=DATE}, #{statrc,jdbcType=INTEGER},
+		#{depict,jdbcType=VARCHAR}, #{goodsimg,jdbcType=LONGVARBINARY})
+	</insert>
+	<insert id="insertSelective"
+		parameterType="com.accp.paimai.pojo.Good">
+		insert into goods
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="goodsid != null">
+				goodsId,
+			</if>
+			<if test="goodsname != null">
+				goodsName,
+			</if>
+			<if test="goodsprice != null">
+				goodsPrice,
+			</if>
+			<if test="startdate != null">
+				startDate,
+			</if>
+			<if test="enddate != null">
+				endDate,
+			</if>
+			<if test="statrc != null">
+				statrc,
+			</if>
+			<if test="depict != null">
+				depict,
+			</if>
+			<if test="goodsimg != null">
+				goodsImg,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="goodsid != null">
+				#{goodsid,jdbcType=INTEGER},
+			</if>
+			<if test="goodsname != null">
+				#{goodsname,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsprice != null">
+				#{goodsprice,jdbcType=REAL},
+			</if>
+			<if test="startdate != null">
+				#{startdate,jdbcType=DATE},
+			</if>
+			<if test="enddate != null">
+				#{enddate,jdbcType=DATE},
+			</if>
+			<if test="statrc != null">
+				#{statrc,jdbcType=INTEGER},
+			</if>
+			<if test="depict != null">
+				#{depict,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsimg != null">
+				#{goodsimg,jdbcType=LONGVARBINARY},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective"
+		parameterType="com.accp.paimai.pojo.Good">
+		update goods
+		<set>
+			<if test="goodsname != null">
+				goodsName = #{goodsname,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsprice != null">
+				goodsPrice = #{goodsprice,jdbcType=REAL},
+			</if>
+			<if test="startdate != null">
+				startDate = #{startdate,jdbcType=DATE},
+			</if>
+			<if test="enddate != null">
+				endDate = #{enddate,jdbcType=DATE},
+			</if>
+			<if test="statrc != null">
+				statrc = #{statrc,jdbcType=INTEGER},
+			</if>
+			<if test="depict != null">
+				depict = #{depict,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsimg != null">
+				goodsImg = #{goodsimg,jdbcType=LONGVARBINARY},
+			</if>
+		</set>
+		where goodsId = #{goodsid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKeyWithBLOBs"
+		parameterType="com.accp.paimai.pojo.Good">
+		update goods
+		set goodsName = #{goodsname,jdbcType=VARCHAR},
+		goodsPrice = #{goodsprice,jdbcType=REAL},
+		startDate = #{startdate,jdbcType=DATE},
+		endDate = #{enddate,jdbcType=DATE},
+		statrc = #{statrc,jdbcType=INTEGER},
+		depict = #{depict,jdbcType=VARCHAR},
+		goodsImg = #{goodsimg,jdbcType=LONGVARBINARY}
+		where goodsId = #{goodsid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey"
+		parameterType="com.accp.paimai.pojo.Good">
+		update goods
+		set goodsName = #{goodsname,jdbcType=VARCHAR},
+		goodsPrice = #{goodsprice,jdbcType=REAL},
+		startDate = #{startdate,jdbcType=DATE},
+		endDate = #{enddate,jdbcType=DATE},
+		statrc = #{statrc,jdbcType=INTEGER},
+		depict = #{depict,jdbcType=VARCHAR}
+		where goodsId = #{goodsid,jdbcType=INTEGER}
+	</update>
 </mapper>

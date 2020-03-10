@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.accp.paimai.biz.GoodBiz;
 import com.accp.paimai.pojo.Good;
 import com.accp.paimai.vo.GoodVO;
+import com.accp.paimai.vo.IngVO;
 import com.github.pagehelper.PageInfo;
 
 @RestController
@@ -49,5 +50,10 @@ public class GoodAction {
 	@DeleteMapping("/good")
 	public Integer removeGoodById(@RequestBody Integer id) {
 		return biz.removeGoodById(id);
+	}
+	
+	@GetMapping("ing/{n}/{s}")
+	public PageInfo<IngVO> queryIng(@PathVariable Integer n,@PathVariable Integer s){
+		return biz.queryIng(n, s);
 	}
 }

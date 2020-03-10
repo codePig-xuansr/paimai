@@ -14,6 +14,7 @@ import com.accp.paimai.dao.GoodMapper;
 import com.accp.paimai.pojo.Good;
 import com.accp.paimai.pojo.User;
 import com.accp.paimai.vo.GoodVO;
+import com.accp.paimai.vo.IngVO;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.github.pagehelper.PageHelper;
@@ -66,5 +67,10 @@ public class GoodBiz {
 	
 	public Integer removeGoodById(Integer id) {
 		return dao.deleteById(id);
+	}
+	
+	public PageInfo<IngVO> queryIng(Integer n,Integer s){
+		PageHelper.startPage(n, s);
+		return new PageInfo<IngVO>(dao.queryIng());
 	}
 }

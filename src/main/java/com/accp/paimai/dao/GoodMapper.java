@@ -1,6 +1,9 @@
 package com.accp.paimai.dao;
 
+import java.util.List;
+
 import com.accp.paimai.pojo.Good;
+import com.accp.paimai.vo.IngVO;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 public interface GoodMapper extends BaseMapper<Good>{
@@ -17,4 +20,6 @@ public interface GoodMapper extends BaseMapper<Good>{
 //    int updateByPrimaryKeyWithBLOBs(Good record);
 //
 //    int updateByPrimaryKey(Good record);
+	
+	public List<IngVO> queryIng();
 }
