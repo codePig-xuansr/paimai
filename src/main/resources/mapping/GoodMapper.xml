@@ -47,6 +47,10 @@
 		INNER JOIN `user` u ON gd.`userId`=u.`userId`
 		WHERE g.`goodsId`=#{0} ORDER BY `dPrice` DESC
 	</select>
+	
+	<select id="queryAllIng" resultType="com.accp.paimai.pojo.Good">
+		select * from `goods` WHERE NOW() BETWEEN `startDate` AND `endDate`
+	</select>
 
 	<select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs"
 		parameterType="java.lang.Integer">

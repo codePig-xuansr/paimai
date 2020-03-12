@@ -22,4 +22,6 @@ public interface GoodMapper extends BaseMapper<Good>{
 //    int updateByPrimaryKey(Good record);
 	
 	public List<IngVO> queryIng();
+	
+	public List<Good> queryAllIng();
 }

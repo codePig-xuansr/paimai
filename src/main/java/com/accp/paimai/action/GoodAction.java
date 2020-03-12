@@ -42,6 +42,11 @@ public class GoodAction {
 		return biz.queryAll(1,5);
 	}
 	
+	@GetMapping("ing")
+	public PageInfo<Good> queryAllIng(){
+		return biz.queryAllIng(1,5);
+	}
+	
 	@PutMapping("/good")
 	public Integer modifyGoodById(@RequestBody Good good) {
 		return biz.modifyGoodById(good);

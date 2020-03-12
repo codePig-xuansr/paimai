@@ -38,6 +38,13 @@ public class GoodBiz {
 		PageInfo<Good> info = new PageInfo<Good>(list);
 		return info;
 	}
+	
+	public PageInfo<Good> queryAllIng(Integer pageNum, Integer size) {
+		PageHelper.startPage(pageNum, size);
+		List<Good> list = dao.queryAllIng();
+		PageInfo<Good> info = new PageInfo<Good>(list);
+		return info;
+	}
 
 	public PageInfo<Good> queryBy(GoodVO vo) {
 		PageHelper.startPage(vo.getNum(), vo.getSize());
